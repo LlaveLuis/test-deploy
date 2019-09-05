@@ -5,6 +5,9 @@ __pycache__/
 # environment file
 .env
 
+# collected static files
+staticfiles/
+
 # media directory
 media/
 
