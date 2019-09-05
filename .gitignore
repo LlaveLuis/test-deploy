@@ -1,0 +1,13 @@
+# compiled python files
+*.pyc
+__pycache__/
+
+# environment file
+.env
+
+# media directory
+media/
+
+# PyCharm config directory
+idea/
+
