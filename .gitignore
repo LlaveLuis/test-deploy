@@ -9,5 +9,5 @@ __pycache__/
 media/
 
 # PyCharm config directory
-idea/
+.idea/
 
