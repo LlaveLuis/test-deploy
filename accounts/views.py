@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.contrib.auth import get_user_model
+from django.views.generic import ListView
 
-# Create your views here.
+User = get_user_model()
+
+
+class AccountList(ListView):
+    template_name = 'accounts/account_list.html'
+    model = User
