@@ -1,13 +1,18 @@
+import dotenv
 import os
+import warnings
+
+with warnings.catch_warnings():   # To avoid warning when .env file does not exists
+    warnings.simplefilter('ignore')
+    dotenv.read_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8e3x6yh9o6n05s=fzxw5_r*++h9yox1589i)g3e)r)%sfyq+j^'
+SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ['DEBUG'])
 
 ALLOWED_HOSTS = ['*', ]
 
