@@ -13,5 +13,6 @@ This `.env` file should contains DEBUG and SECRET_KEY definitions. In Heroku, th
 To generate a secret key, execute: `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
 
 
-### Notes about structure:
-The `main` app uses a non-recommended structure for templates, it's just for example; recommended way is used in `accounts` app.
+### Notes:
+- The `main` app uses a non-recommended structure for templates, it's just for example; recommended way is used in `accounts` app.
+- Used Python version: 3.7.6
