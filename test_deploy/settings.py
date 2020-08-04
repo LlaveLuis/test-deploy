@@ -1,7 +1,9 @@
 import django_heroku
 import dotenv
 import os
+import sentry_sdk
 import warnings
+from sentry_sdk.integrations.django import DjangoIntegration
 
 with warnings.catch_warnings():   # To avoid warning when .env file does not exists
     warnings.simplefilter('ignore')
@@ -102,6 +104,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+def omit_invalid_hostname(event, hint):
+    """Don't log django.DisallowedHost errors in Sentry"""
+    if 'log_record' in hint:
+        if hint['log_record'].name == 'django.security.DisallowedHost':
+            return None
+    return event
+
+sentry_sdk.init(
+    dsn=os.environ['SENTRY_DSN'],
+    integrations=[DjangoIntegration()],
+    before_send=omit_invalid_hostname,
+)
+
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
