@@ -1,3 +1,4 @@
+import django_heroku
 import dotenv
 import os
 import warnings
@@ -101,3 +102,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+django_heroku.settings(locals())
