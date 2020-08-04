@@ -15,4 +15,4 @@ To generate a secret key, execute: `python -c 'from django.core.management.utils
 
 ### Notes:
 - The `main` app uses a non-recommended structure for templates, it's just for example; recommended way is used in `accounts` app.
-- Used Python version: 3.7.6
+- Used Python version: 3.7.7
