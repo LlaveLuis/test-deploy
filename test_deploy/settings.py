@@ -106,17 +106,17 @@ STATICFILES_DIRS = [
 ]
 
 
-def omit_invalid_hostname(event, hint):
-    """Don't log django.DisallowedHost errors in Sentry"""
-    if 'log_record' in hint:
-        if hint['log_record'].name == 'django.security.DisallowedHost':
-            return None
-    return event
+# def omit_invalid_hostname(event, hint):
+#     """Don't log django.DisallowedHost errors in Sentry"""
+#     if 'log_record' in hint:
+#         if hint['log_record'].name == 'django.security.DisallowedHost':
+#             return None
+#     return event
 
 sentry_sdk.init(
     dsn=os.environ['SENTRY_DSN'],
     integrations=[DjangoIntegration()],
-    before_send=omit_invalid_hostname,
+    # before_send=omit_invalid_hostname,
 )
 
 
